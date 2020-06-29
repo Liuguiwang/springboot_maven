@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- 公共样式 开始 -->
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- jQuery -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <!-- Bootstrap -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/person.js}"></script>
+</head>
+
+<body>
+<div class="clearfix"></div>
+<div class="row" style="padding-left: 5%">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title" style="padding-left: 40px">
+                <h4>
+                    当前用户>> <i class="fa fa-user"></i><small th:text="${session.devIfo.devName}+'---您可以进行个人信息编辑'">
+                </small>
+                </h4>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="userinfo_box">
+        <div style="padding-left: 40px">
+            <input type="hidden" name="createdBy" value="1">
+            <input type="hidden" class="userInfo" name="id" th:value="${session.devIfo.id}" th:userid="${session.devIfo.id}">
+            <form class="box">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">devCode</label>
+                    <input th:value="${session.devIfo.devCode}" type="text" class="form-control"  placeholder="devCode" style="width: 600px">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">devName</label>
+                    <input th:value="${session.devIfo.devName}" type="text" class="form-control"  placeholder="devName" style="width: 600px">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">devEmail</label>
+                    <input  th:if="${session.devIfo.devEmail==null}" value="该用户暂时没有填写信息" type="text" class="form-control"  placeholder="devInfo" style="width: 600px">
+                    <input  th:if="${session.devIfo.devEmail!=null}" th:value="${session.devIfo.devEmail}" type="text" class="form-control"  placeholder="devInfo" style="width: 600px">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">creationDate</label>
+                    <input th:if="${session.devIfo.creationDate==null}" value="没有相关记录" type="text" class="form-control"  placeholder="creationDate" style="width: 600px">
+                    <input th:value="${session.devIfo.creationDate}" type="text" class="form-control"  placeholder="creationDate" style="width: 600px">
+                </div>
+
+                <div class="form-group" th:switch="${session.devIfo.createdBy}">
+                    <label for="exampleInputPassword1">createBy</label>
+                    <input th:case="1" value="系统管理员" type="text" class="form-control"  style="width: 600px">
+                    <input th:case="2" value="财务" type="text" class="form-control"  style="width: 600px">
+                    <input th:case="3" value="市场" type="text" class="form-control"  style="width: 600px">
+                    <input th:case="4" value="运营" type="text" class="form-control"  style="width: 600px">
+                    <input th:case="5" value="销售" type="text" class="form-control"  style="width: 600px">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">devInfo</label>
+                    <input  th:if="${session.devIfo.devInfo==null}" value="该用户暂时没有填写信息" type="text" class="form-control"  placeholder="devInfo" style="width: 600px">
+                    <input  th:if="${session.devIfo.devInfo!=null}" th:value="${session.devIfo.devInfo}" type="text" class="form-control"  placeholder="devInfo" style="width: 600px">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">devPassword</label>
+                    <input th:value="${session.devIfo.devPassword}" type="password" class="form-control"  placeholder="Password" style="width: 600px">
+                </div>
+                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                <button type="button" class="btn btn-primary" ><a style="color: white;text-decoration: none" th:href="@{/password}">修改密码</a></button>
+                <!-- Indicates a successful or positive action -->
+                <button type="button" class="btn btn-success"><a style="color: white;text-decoration: none" th:href="@{/devmian.html}">返回</a></button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- 公共样式 开始 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/base.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/iconfont.css}">
+    <script type="text/javascript" th:src="@{/framework/jquery-1.11.3.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/layui/css/layui.css}">
+    <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+    <!-- 滚动条插件 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/jquery.mCustomScrollbar.css}">
+    <script th:src="@{/framework/jquery-ui-1.10.4.min.js}"></script>
+    <script th:src="@{/js/base.js}"></script>
+    <script th:src="@{/framework/jquery.mousewheel.min.js}"></script>
+    <script th:src="@{/framework/jquery.mCustomScrollbar.min.js}"></script>
+    <script th:src="@{/framework/cframe.js}"></script><!-- 仅供所有子页面使用 -->
+    <!-- 公共样式 结束 -->
+    <title>系统首页</title>
+</head>
+<style>
+    .welcome a:hover{
+        color: #9CC2CB;
+    }
+    body{
+        background:#ECECEC;
+    }
+    hr{
+        height: 5px;
+    }
+</style>
+<body>
+<!--模块 开始-->
+<DIV>
+    <DIV class="welcome" style="text-align: center;padding-top: 15%">
+        <a href="#" style="font-size:40px;">欢迎进入开发者首页</a>
+    </DIV>
+    <hr>
+    <div style="text-align: center;font-size: 30px">W&nbsp;E&nbsp;L&nbsp;C&nbsp;O&nbsp;M&nbsp;E</div>
+</DIV>
+<!--模块 结束-->
+</body>
+</html>

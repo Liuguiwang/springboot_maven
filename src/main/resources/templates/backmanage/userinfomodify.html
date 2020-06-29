@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- 公共样式 开始 -->
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title" style="padding-left: 40px">
+                <h4>
+                    当前查看用户>> <i class="fa fa-user"></i><small th:text="${userInfo.userName}+'---您可以进行后台用户编辑'">
+                </small>
+                </h4>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+<div class="userinfo_box">
+<div style="padding-left: 40px">
+    <input type="hidden" name="createdBy" value="1">
+    <form th:action="@{/backuser/list}">
+        <div class="form-group">
+            <label for="exampleInputEmail1">userCode</label>
+            <input th:value="${userInfo.userCode}" type="text" class="form-control" id="exampleInputEmail1" placeholder="Email" style="width: 600px">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">userName</label>
+            <input th:value="${userInfo.userName}" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" style="width: 600px">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">userType</label>
+            <select name="userType" class="form-control" style="width: 600px">
+                <th:if test="${userTypeList != null }">
+                    <option value="" >--请选择--</option>
+                    <option th:each="usertypelist:${userTypeList}" th:value="${usertypelist.valueId}" th:text="${usertypelist.valueName}" ></option>
+                    </th:each>
+                </th:if>
+            </select>
+        </div>
+
+        <div class="form-group" th:switch="${userInfo.createdBy}">
+            <label for="exampleInputPassword1">createBy</label>
+            <input th:case="1" value="系统管理员" type="text" class="form-control"  style="width: 600px">
+            <input th:case="2" value="财务" type="text" class="form-control"  style="width: 600px">
+            <input th:case="3" value="市场" type="text" class="form-control"  style="width: 600px">
+            <input th:case="4" value="运营" type="text" class="form-control"  style="width: 600px">
+            <input th:case="5" value="销售" type="text" class="form-control"  style="width: 600px">
+
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">userPassword</label>
+            <input th:value="${userInfo.userPassword}" type="password" class="form-control"  placeholder="Password" style="width: 600px">
+        </div>
+        <button type="submit" class="btn btn-default" style="background: #1ABB9C">Submit</button>
+        <button class="btn btn-default">Cancel</button>
+    </form>
+</div>
+</body>
+</html>

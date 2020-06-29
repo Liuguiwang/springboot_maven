@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>APP信息管理系统</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" th:href="@{/css/login2.css}">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="login_enter">
+    <div class="title">
+        <h1>APP信息管理平台</h1>
+    </div>
+
+    <div class="submit" id="back_enter">
+        <input type="submit" value="后台管理系统 入口" >
+    </div>
+    <div class="submit" id="dev_enter">
+        <input type="submit" value="开发者平台 入口" >
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#back_enter").click(function () {
+            document.getElementById("login_back").style.display="block";
+            document.getElementById("login_dev").style.display="none";
+        });
+
+        $("#dev_enter").click(function () {
+            document.getElementById("login_back").style.display="none";
+            document.getElementById("login_dev").style.display="block";
+        })
+    });
+    //17211160119 刘贵望
+</script>
+    <div>
+        <form th:action="@{/backlogin.html}" method="post" class="box" style="display: none" id="login_back">
+            <h1 style="">Back ManegeSys</h1>
+            <span th:text="${#request.getAttribute('message')}" style="color: red"></span>
+            <div>
+<!--                <input type="text" name="userCode" placeholder="userCode" required="" />-->
+                <input type="text" name="userCode" placeholder="userCode">
+            </div>
+            <div>
+<!--                <input type="password"  name="userPassword" placeholder="userPassword" required=""/>-->
+                <input type="password" name="userPassword" placeholder="userPassword">
+            </div>
+            <div>
+                <input type="submit" name="" value="Login">
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+                <div>
+                    <p>©2020-17211160119-刘贵望 </p>
+                </div>
+            </div>
+        </form>
+
+        <form th:action="@{/devlogin.html}" method="post" class="box" style="display: none" id="login_dev">
+            <h1 style="">App Developer</h1>
+            <span th:text="${#request.getAttribute('message')}" style="color: red"></span>
+            <div>
+<!--                <input type="text" name="userCode" placeholder="userCode" required="" />-->
+                <input type="text" name="devCode" placeholder="userCode">
+            </div>
+            <div>
+<!--                <input type="password"  name="userPassword" placeholder="userPassword" required=""/>-->
+                <input type="password" name="devPassword" placeholder="userPassword">
+            </div>
+            <div>
+                <input type="submit" name="" value="Login">
+            </div>
+            <div class="clearfix"></div>
+            <div class="separator">
+                <div>
+                    <p>©2020-17211160119-刘贵望 </p>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
